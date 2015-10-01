@@ -187,4 +187,12 @@
     });
 }
 
+- (id)copyWithZone:(NSZone *)zone
+{
+    APAsyncDictionary *dict = [[self.class allocWithZone:zone] init];
+    [dict setObjectsAndKeysFromDictionary:self.dictionary];
+    
+    return dict;
+}
+
 @end
