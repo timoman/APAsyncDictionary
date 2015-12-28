@@ -190,10 +190,10 @@
 - (id)copyWithZone:(NSZone *)zone
 {
     __weak __typeof(self) weakSelf = self;
+    APAsyncDictionary *dict = [[self.class allocWithZone:zone] init];
     dispatch_sync(_queue, ^{
         [dict setObjectsAndKeysFromDictionary:weakSelf.dictionary];
     });
-    APAsyncDictionary *dict = [[self.class allocWithZone:zone] init];
     [dict setObjectsAndKeysFromDictionary:self.dictionary];
     
     return dict;
